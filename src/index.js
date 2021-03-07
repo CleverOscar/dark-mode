@@ -11,6 +11,12 @@ const App = () => {
   const [coinData, setCoinData] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
 
+  const item = window.localStorage
+  const [storeLocal, setStoreLocal] = useState(item);
+
+
+  console.log(storeLocal)
+
   useEffect(() => {
     axios
       .get(
@@ -19,6 +25,8 @@ const App = () => {
       .then(res => setCoinData(res.data))
       .catch(err => console.log(err));
   }, []);
+
+
   return (
     <div className={darkMode ? "dark-mode App" : "App"}>
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
